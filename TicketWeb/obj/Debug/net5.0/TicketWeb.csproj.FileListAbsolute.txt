@@ -1353,7 +1353,6 @@ D:\PBL3-TicketWeb\TicketWeb\obj\Debug\net5.0\Razor\Views\Flight\Edit.cshtml.g.cs
 D:\PBL3-TicketWeb\TicketWeb\obj\Debug\net5.0\Razor\Views\Flight\Index.cshtml.g.cs
 D:\PBL3-TicketWeb\TicketWeb\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
 D:\PBL3-TicketWeb\TicketWeb\obj\Debug\net5.0\Razor\Views\Home\Privacy.cshtml.g.cs
-D:\PBL3-TicketWeb\TicketWeb\obj\Debug\net5.0\Razor\Views\Home\Search.cshtml.g.cs
 D:\PBL3-TicketWeb\TicketWeb\obj\Debug\net5.0\Razor\Views\MayBay\Create.cshtml.g.cs
 D:\PBL3-TicketWeb\TicketWeb\obj\Debug\net5.0\Razor\Views\MayBay\Delete.cshtml.g.cs
 D:\PBL3-TicketWeb\TicketWeb\obj\Debug\net5.0\Razor\Views\MayBay\Edit.cshtml.g.cs

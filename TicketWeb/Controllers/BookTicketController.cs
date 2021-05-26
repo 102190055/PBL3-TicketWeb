@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using TicketWeb.Data;
@@ -18,11 +19,16 @@ namespace TicketWeb.Views.BookTicket
             _dbContext = dbCOntext;
         }
         // GET: BookTicketController
-        public ActionResult Index(int start, int end)
+        public ActionResult Index(int start, int end,string ngaydi)
         {
             var sanbaydi = _dbContext.SanBay.FirstOrDefault(x => x.ID == start)?.Name;
             var sanbayden = _dbContext.SanBay.FirstOrDefault(x => x.ID == end)?.Name;
-            var listFlight = _dbContext.ChuyenBays.Where(s => s.SanBayDi_ID == start && s.SanBayDen_ID == end)
+
+            CultureInfo enUS = new CultureInfo("en-US");
+            var ngayDuKien = DateTime.Now;
+            DateTime.TryParseExact(ngaydi, "dd/MM/yyyy", enUS, DateTimeStyles.None, out ngayDuKien);
+            
+            var listFlight = _dbContext.ChuyenBays.Where(s => (s.SanBayDi_ID == start) && (s.SanBayDen_ID == end) && (s.ThoiGianDuKienBay.Date.Date >= ngayDuKien.Date && s.ThoiGianDuKienBay.Date.Date < ngayDuKien.Date.AddDays(1)))
                                 .Select(x => new ChuyenBay
                                 {
                                     MaChuyenBay = x.MaChuyenBay,
@@ -33,7 +39,7 @@ namespace TicketWeb.Views.BookTicket
                                     SanBayDi_ID = start,
                                     SoGhe_Hang1 = x.SoGhe_Hang1,
                                     SoGhe_Hang2 = x.SoGhe_Hang2,
-                                    ThoiGianDuKienBay = x.ThoiGianDuKienBay,
+                                    ThoiGianDuKienBay = ngayDuKien,
                                     ID = x.ID
                                 });
             return View(listFlight.ToList());

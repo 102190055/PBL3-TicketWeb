@@ -61,19 +61,16 @@ namespace TicketWeb.Controllers
             if (!string.IsNullOrEmpty(searchMaChuyenBay))
             {
                 listFlight = listFlight.Where(s => s.MaChuyenBay.StartsWith(searchMaChuyenBay));
-                //return View(listFlight.Where(s => s.MaChuyenBay.StartsWith(search)).ToList());
             }
 
             if(!string.IsNullOrEmpty(searchSanBayDen_ID))
             {
                 listFlight = listFlight.Where(s => s.SanBayDen_ID.ToString() == searchSanBayDen_ID);
-                //return View(listFlight.Where(s => s.SanBayDi_ID.ToString() == search).ToList());
             }
 
             if (!string.IsNullOrEmpty(searchSanBayDi_ID))
             {
                 listFlight = listFlight.Where(s => s.SanBayDi_ID.ToString() == searchSanBayDi_ID);
-                //return View(listFlight.Where(s => s.SanBayDen_ID.ToString() == search).ToList());
             }
 
             if (!string.IsNullOrEmpty(searchThoiGianDuKienBay))
@@ -84,31 +81,22 @@ namespace TicketWeb.Controllers
                 {
                     listFlight = listFlight.Where(s => s.ThoiGianDuKienBay.Date.Date >= ngayDuKien.Date && s.ThoiGianDuKienBay.Date.Date < ngayDuKien.Date.AddDays(1));
                 }
-                
-                //return View(listFlight.Where(s => s.ThoiGianDuKienBay.Date.ToString("dd/MM/yyyy") == search).ToList());
             }
 
             if (!string.IsNullOrEmpty(searchSoGhe_Hang1))
             {
                 listFlight = listFlight.Where(s => s.SoGhe_Hang1.ToString() == searchSoGhe_Hang1);
-                //return View(listFlight.Where(s => s.SoGhe_Hang1.ToString() == search).ToList());
             }
 
             if (!string.IsNullOrEmpty(searchSoGhe_Hang2))
             {
                 listFlight = listFlight.Where(s => s.SoGhe_Hang2.ToString() == searchSoGhe_Hang2);
-                //return View(listFlight.Where(s => s.SoGhe_Hang2.ToString() == search).ToList());
             }
 
             if (!string.IsNullOrEmpty(searchMayBayID))
             {
                 listFlight = listFlight.Where(s => s.MayBayID.ToString() == searchMayBayID);
-                //return View(listFlight.Where(s => s.MayBayID.ToString() == search).ToList());
             }
-
-            //var model = new FlightIndexViewModel();
-            //model.CHuyenBayDi = listFlight.ToList();
-            //model.CHuyenBayVe = listFlight.ToList();
             return View(listFlight.ToList());
         }
 

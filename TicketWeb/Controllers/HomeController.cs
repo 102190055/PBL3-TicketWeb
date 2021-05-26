@@ -43,12 +43,7 @@ namespace TicketWeb.Controllers
 
             return View();
         }
-        public IActionResult Search(int start, int end)
-        {
-            var listFlight = _dbContext.ChuyenBays.Where(s => s.SanBayDen_ID == start && s.SanBayDi_ID == end);
-            return View(listFlight.ToList());
-        }
-
+        
         public IActionResult Privacy()
         {
             return View();

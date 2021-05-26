@@ -25,53 +25,7 @@ namespace TicketWeb
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddDbContext<TicketWebContext>(options =>
-            //    options.UseSqlServer(
-            //        Configuration.GetConnectionString("TicketWebContext")));
-            ////services.AddIdentity<AppUser, IdentityRole>(option =>
-            ////{
-            ////    option.Password.RequiredLength = 8;
-            ////}).AddEntityFrameworkStores<TicketWebContext>();
-            //services.AddMvc(
-            //    options =>
-            //    {
-            //        options.EnableEndpointRouting = false;
-            //        var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
-            //        options.Filters.Add(new AuthorizeFilter(policy));
-            //    }
-            //    ).AddXmlSerializerFormatters();
-            //services.AddDatabaseDeveloperPageExceptionFilter();
-            ////services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<TicketWebContext>();
-
-            //services.AddDefaultIdentity<TicketWebUser>(options => options.SignIn.RequireConfirmedAccount = false)
-            //    .AddRoles<IdentityRole>()
-            //    .AddEntityFrameworkStores<TicketWebContext>();
-            //services.AddControllersWithViews();
-            //services.Configure<IdentityOptions>(options => {
-            //    // Thiết lập về Password
-            //    options.Password.RequireDigit = false; // Không bắt phải có số
-            //    options.Password.RequireLowercase = false; // Không bắt phải có chữ thường
-            //    options.Password.RequireNonAlphanumeric = false; // Không bắt ký tự đặc biệt
-            //    options.Password.RequireUppercase = false; // Không bắt buộc chữ in
-            //    options.Password.RequiredLength = 3; // Số ký tự tối thiểu của password
-            //    options.Password.RequiredUniqueChars = 1; // Số ký tự riêng biệt
-
-            //    // Cấu hình Lockout - khóa user
-            //    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(2); // Khóa 2 phút
-            //    options.Lockout.MaxFailedAccessAttempts = 5; // Thất bại 5 lầ thì khóa
-            //    options.Lockout.AllowedForNewUsers = true;
-
-            //    // Cấu hình về User.
-            //    options.User.AllowedUserNameCharacters = // các ký tự đặt tên user
-            //        "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
-            //    options.User.RequireUniqueEmail = true;  // Email là duy nhất
-
-            //    // Cấu hình đăng nhập.
-            //    options.SignIn.RequireConfirmedEmail = false;            // Cấu hình xác thực địa chỉ email (email phải tồn tại)
-            //    options.SignIn.RequireConfirmedPhoneNumber = false;     // Xác thực số điện thoại
-
-            //});
-
+            
             services.AddDbContext<TicketWebContext>(options =>
                options.UseSqlServer(
                    Configuration.GetConnectionString("DefaultConnection")));
