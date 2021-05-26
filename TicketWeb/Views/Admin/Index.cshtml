@@ -1,0 +1,84 @@
+@{
+
+    Layout = "_LayoutPortal3";
+}
+<!DOCTYPE html>
+<html>
+<style>
+    .header {
+        background-color: rgb(255, 255, 255);
+        text-align: left;
+        padding: 5px;
+        border-left: 4px ridge #f8f7f8;
+        border-right: 4px ridge #f3f0f1;
+        font-size: 20px;
+    }
+
+    p.bold {
+        color: black;
+        font-weight: bold;
+    }
+
+    .border1 {
+        border-radius: 20px;
+        background-color: aqua;
+        color: white;
+        width: 200px;
+        height: 50px;
+        padding: 20px;
+        text-align: left;
+    }
+
+    body {
+        background-image: url("https://images.wallpaperscraft.com/image/airplane_sky_clouds_86646_1600x900.jpg");
+        font-family: sans-serif;
+        color: #333;
+    }
+
+    #menu ul {
+        list-style-type: none;
+        background: rgb(140, 174, 236);
+        text-align: center;
+        margin: 0;
+    }
+
+        #menu ul li {
+            color: #f1f1f1;
+            display: inline-table;
+            width: 120px;
+            height: 40px;
+            line-height: 40px;
+        }
+
+            #menu ul li a {
+                color: #f1f1f1;
+                text-decoration: none;
+                display: block;
+            }
+
+                #menu ul li a:hover {
+                    background: #f1f1f1;
+                    color: #333;
+                }
+</style>
+<head>
+    <title>
+        Admin
+    </title>
+    <div class="header">
+        <p class="bold">🅰🅳🅼🅸🅽</p>
+    </div>
+</head>
+<body>
+    <div id="menu">
+        <ul>
+            <li><a href="/Role">Khách hàng</a></li>
+            <li><a href="/Flight">Chuyến bay</a></li>
+            <li><a href="/VeMayBay">Vé Máy Bay</a></li>
+            <li><a href="/SanBay">Sân Bay</a></li>
+            <li><a href="/MayBay">Máy bay</a></li>
+            <li><a href="#">Doanh Thu</a></li>
+        </ul>
+    </div>
+</body>
+</html>

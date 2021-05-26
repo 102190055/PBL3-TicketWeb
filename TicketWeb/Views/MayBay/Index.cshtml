@@ -1,0 +1,79 @@
+﻿@{
+
+    Layout = "_LayoutPortal3";
+}
+@model IEnumerable<TicketWeb.Models.MayBay>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<style>
+    .header {
+        background-color: #1559b6;
+        text-align: center;
+        padding: 5px;
+        border-bottom: 2px ridge #ffffff;
+        font-size: 30px;
+        color: azure;
+        font-family: sans-serif;
+    }
+
+    .btn_add {
+        border-radius: 5px;
+        color: #ffffff;
+        background-color: #4cff00;
+        padding: 10px;
+    }
+
+    body {
+        background-image: url("https://img2.thuthuatphanmem.vn/uploads/2019/03/02/hinh-nen-powerpoint-xanh-duong-cuc-dep_012324053.jpeg");
+        line-height: 3.5;
+    }
+</style>
+<head>
+    <title>Quản Lý Máy Bay</title>
+    <div class="header">
+        <h1 class="head-title">QUẢN LÝ MÁY BAY</h1>
+    </div>
+</head>
+
+<p style="text-align:left" ;>
+    <a class="btn_add" asp-action="Create">Thêm Máy Bay</a>
+</p>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Code)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Code)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.ID }) |
+                    @Html.ActionLink("Xóa", "Delete", new { id = item.ID })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

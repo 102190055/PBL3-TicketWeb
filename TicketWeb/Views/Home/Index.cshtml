@@ -1,0 +1,216 @@
+﻿@{
+
+    Layout = "_LayoutPortal";
+}
+
+<div id="app">
+    <main class="main-wrap">
+        <div class="sidebar-left">
+            <div class="nav-menu">
+                <ul class="menu-list">
+                    <li class="menu-item active">
+                        <a href="index.html" class="menu-link">
+                            <span class="icon">
+                                <img src="https://olala.vn/images/datve.svg" alt="" title="Đặt vé máy bay">
+                            </span>
+                            <span class="menu-text">Đặt vé máy bay</span>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="khuyen-mai.html" class="menu-link">
+                            <span class="icon">
+                                <img src="https://olala.vn/images/km.svg" alt="" title="Khuyến mại">
+                            </span>
+                            <span class="menu-text">Khuyến mãi</span>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="cam-nang.html" class="menu-link">
+                            <span class="icon">
+                                <img src="https://olala.vn/images/camnang.svg" alt="" title="Cẩm nang du lịch">
+                            </span>
+                            <span class="menu-text">Cẩm nang du lịch</span>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="thanh-toan.html" class="menu-link">
+                            <span class="icon">
+                                <img src="https://olala.vn/images/thanhtoan.svg" alt="" title="Thanh toán">
+                            </span>
+                            <span class="menu-text">Thanh toán</span>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="lien-he.html" class="menu-link">
+                            <span class="icon">
+                                <img src="https://olala.vn/images/lienhe.svg" alt="" title="Liên hệ">
+                            </span>
+                            <span class="menu-text">Liên hệ</span>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="/Admin" class="menu-link">
+                            <span class="icon">
+                                <img src="https://olala.vn/images/ic_user.png" alt="" title="Admin">
+                            </span>
+                            <span class="menu-text">Admin</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            @if (!User.Identity.IsAuthenticated)
+            {
+                <div class="user_fix">
+                    <div class="login">
+                        <a href="/Login" data-toggle="modal" data-target="#loginModal"
+                           class="d-flex align-items-center">
+                            <p class="ic_user">
+                                <img src="https://olala.vn/images/ic_user.png" alt="">
+                            </p>
+                            <span>Đăng nhập</span>
+                        </a>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="user_fix">
+                    <div class="logout">
+                        <a class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post"
+                           class="d-flex align-items-center">
+                            <p class="ic_user">
+                                <img src="images/ic_user.png" alt="">
+                            </p>
+                            <span>Đăng Xuất</span>
+                        </a>
+                    </div>
+                </div>
+            }
+
+        </div>
+        <style>
+            body {
+                background-image: url('https://www.airlinequality.com/wp-content/uploads/2019/06/about-us-image.jpg?fbclid=IwAR0zdveSBU81rODnmtRSbt5_FQhpPKX3MBeaARunynmbIMxm4OkKUh7LqVg');
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: 100% 100%;
+            }
+        </style>
+        <form asp-action="Index" asp-controller="BookTicket" id="SearchFlightForm">
+            <div class="search-box" id="do-my-vue">
+                <div class="search-box-title">
+                    <h4>Đặt vé máy bay</h4>
+                </div>
+                <div class="search-box-content">
+                    <ul class="nav nav-pills mb-3" id="pills-tab">
+                        <li class="nav-item">
+                            <a class="tab-link active " id="onway-tab">
+                                Một
+                                chiều
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="tab-link " id="return-tab">
+                                Khứ
+                                Hồi
+                            </a>
+                        </li>
+                    </ul>
+
+                    <input type="hidden" name="type" v-model="type">
+                    <div class="tab-content" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="return" role="tabpanel"
+                             aria-labelledby="return-tab">
+                            <div class="box-flight d-flex flex-wrap">
+                                <div class="d-flex city-box align-items-center">
+                                    <div class="city-box-item city-start" ref="city_start">
+                                        <span class="city-box-title">Chọn nơi xuất phát</span>
+                                        <select class="noixuatphat" name="start" asp-items="@ViewBag.SanBayDi" style="width: 200px; height: 40px; border-radius: 10px;"></select>
+                                    </div>
+                                    <span class="ic_flight-center pt-4">
+                                        <img src="https://olala.vn/images/ic_flight-gray.png"
+                                             alt="">
+                                    </span>
+                                    <div class="city-box-item city-end" ref="city_end">
+                                        <span class="city-box-title">Chọn nơi đến</span>
+                                        <select class="noiden" name="end" asp-items="@ViewBag.SanBayDen" style="width:200px;height: 40px;border-radius: 10px;"></select>
+                                    </div>
+                                </div>
+                                <div class="box-select-day">
+                                    <div class="d-flex align-items-center">
+                                        <div class="day-item">
+                                            <span class="box-title">ngày đi</span>
+                                            <input class="ngaydi" type="text" id="datepicker" style="width: 200px; height: 40px;border-radius: 10px;" />
+                                        </div>
+                                        @*
+                                        <div class="day-item">
+                                            <span class="box-title">ngày về</span>
+                                            <input class="ngayve" type="text" id="datepickerdi" style="width: 100px;height: 40px;border-radius: 10px;" />
+                                        </div>
+                                        *@
+                                    </div>
+                                </div>
+                                <div class="count-box w-100">
+                                    <div class="d-flex">
+                                        <div class="count-item d-flex">
+                                            <div class="title-box">
+                                                <span class="type">Người lớn</span>
+                                                <span class="old">≥ 12 tuổi</span>
+                                            </div>
+                                            <div class="box-input">
+                                                <input onclick="var result = document.getElementById('nguoilon'); var qty = result.value; if (!isNaN(qty) &amp; qty > 1) result.value--;return false;" type='button' value='-' />
+                                                <input id='nguoilon' min='1' name='nguoilon' type='text' value='1' />
+                                                <input onclick="var result = document.getElementById('nguoilon'); var qty = result.value; if( !isNaN(qty)) result.value++;return false;" type='button' value='+' />
+                                            </div>
+                                        </div>
+                                        <div class="count-item d-flex">
+                                            <div class="title-box">
+                                                <span class="type">Trẻ em</span>
+                                                <span class="old">2 < 12 tuổi</span>
+                                            </div>
+                                            <div class="box-input">
+                                                <input onclick="var result = document.getElementById('treem'); var qty = result.value; if( !isNaN(qty) &amp; qty > 0 ) result.value--;return false;" type='button' value='-' />
+                                                <input id='treem' min='0' name='treem' type='text' value='0' />
+                                                <input onclick="var result = document.getElementById('treem'); var qty = result.value; if( !isNaN(qty)) result.value++;return false;" type='button' value='+' />
+                                            </div>
+                                        </div>
+                                        <div class="count-item d-flex">
+                                            <div class="title-box">
+                                                <span class="type">Trẻ em</span>
+                                                <span class="old">
+                                                    < 2 tuổi
+                                                </span>
+                                            </div>
+                                            <div class="box-input">
+                                                <input onclick="var result = document.getElementById('embe'); var qty = result.value; if( !isNaN(qty) &amp; qty > 0 ) result.value--;return false;" type='button' value='-' />
+                                                <input id='embe' min='0' name='embe' type='text' value='0' />
+                                                <input onclick="var result = document.getElementById('embe'); var qty = result.value; if( !isNaN(qty)) result.value++;return false;" type='button' value='+' />
+                                            </div>
+                                        </div>
+                                        <div class="btn_search">
+                                            <div class="bookticket">
+                                                <a href="javascript:{}" onclick="document.getElementById('SearchFlightForm').submit();"
+                                                   class="d-flex align-items-center">
+                                                    <span>Tìm chuyến bay</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+</main>
+</div>
+
+@section Scripts {
+    <script>
+        $('.noixuatphat').select2();
+        $('.noiden').select2();
+        
+    </script>
+}
+

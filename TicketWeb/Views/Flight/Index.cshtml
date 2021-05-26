@@ -1,0 +1,205 @@
+﻿@{
+
+    Layout = "_LayoutPortal2";
+}
+@model IEnumerable<TicketWeb.Data.ChuyenBay>
+
+
+@{
+    ViewData["Title"] = "Quản lí chuyến bay";
+}
+<!DOCTYPE html>
+<html>
+<style>
+.header{
+    background-color: #1559b6;
+    text-align:center;
+    padding:5px;
+    border-bottom: 2px ridge #ffffff;
+    font-size: 30px;
+    color: azure;
+    font-family: sans-serif;
+}
+.mycolor{
+    color:azure;
+}
+body { background-image: url("https://img2.thuthuatphanmem.vn/uploads/2019/03/02/hinh-nen-powerpoint-xanh-duong-cuc-dep_012324053.jpeg"); 
+       font-family: sans-serif; 
+       color: #333; 
+
+}
+
+  .header-heading {
+      text-align: center;
+      font-family: sans-serif;
+      margin: 10px;
+      color:azure;
+  }
+ 
+  label{
+      padding-left:10px;
+  }
+.input-row{
+    display:flex;
+   
+}
+    .input-group {
+        display: flex;
+        margin-bottom: 20px;
+        justify-content: space-between;
+    }
+    .title-search {
+        text-align:left;
+        font-size:17px;
+    }
+    .border {
+        border-radius: 20px;
+        background-color: azure;
+        width: 1156px;
+        height: 200px;
+        padding: 20px;
+    }
+    .btn_add {
+        border-radius: 5px;
+        color:#ffffff;
+        background-color: #3ee609;
+        padding: 10px;
+
+    }
+</style>
+<head>
+    <title>Quản lý chuyến bay</title>
+    <div class="header">
+        <h1 class="header--title" >QUẢN LÝ CHUYẾN BAY</h1>
+    </div>
+</head>
+<div style="text-align:center">
+    <div class="title-search">
+        <h3>
+            TÌM KIẾM 
+        </h3>
+    </div>
+    @using (Html.BeginForm("Index", "Flight"))
+    {
+<div class="border">
+    <div class="input-row">
+        <div class="input-group">
+            <label for="searchMaChuyenBay">Mã chuyến bay</label>
+            @Html.TextBox("searchMaChuyenBay")
+        </div>
+        <div class="input-group">
+            <label for="searchSanBayDi_ID">Sân bay đi</label>
+            <select class="searchSanBayDi_ID" asp-items="@ViewBag.SanBayDi" name="searchSanBayDi_ID" id="searchSanBayDi_ID" style="width:200px;"></select>
+        </div>
+        <div class="input-group">
+            <label for="searchSanBayDen_ID">Sân bay đến</label>
+            <select class="searchSanBayDen_ID" asp-items="@ViewBag.SanBayDen" name="searchSanBayDen_ID" id="searchSanBayDen_ID" style="width:200px;"></select>
+        </div>
+
+    </div>
+    <div class="input-row">
+        <div class="input-group">
+            <label for="searchThoiGianDuKienBay">Dự kiến bay</label>
+            @Html.TextBox("searchThoiGianDuKienBay")
+        </div>
+        <div class="input-group">
+            <label for="searchSoGhe_Hang1">Số ghế hạng 1</label>
+            @Html.TextBox("searchSoGhe_Hang1")
+        </div>
+        <div class="input-group">
+            <label for="searchSoGhe_Hang2">Số ghế hạng 2</label>
+            @Html.TextBox("searchSoGhe_Hang2")
+        </div>
+    </div>
+    <select class="searchMayBayID" asp-items="@ViewBag.MayBay" name="searchMayBayID" id="searchMayBayID" style="width:200px;"></select>
+    <input type="submit" value="Tìm" />
+    <button>Hủy tìm kiếm</button>
+    <p style="text-align:right";>
+    <a class="btn_add" asp-action="Create">Thêm chuyến bay</a>
+    </p>
+</div>
+    }
+</div>
+<table class="table" style="width:1150px";>
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ID)
+            </th>
+            <th style="width: 150px";
+>
+                @Html.DisplayNameFor(model => model.MaChuyenBay)
+            </th>
+            <th style="width: 150px";>
+                @Html.DisplayNameFor(model => model.SanBayDi_ID)
+            </th>
+            <th style="width: 150px";>
+                @Html.DisplayNameFor(model => model.SanBayDen_ID)
+            </th>
+            <th style="width: 150px";>
+                @Html.DisplayNameFor(model => model.ThoiGianDuKienBay)
+            </th>
+            <th style="width: 150px";>
+                @Html.DisplayNameFor(model => model.SoGhe_Hang1)
+            </th>
+            <th style="width: 150px";>
+                @Html.DisplayNameFor(model => model.SoGhe_Hang2)
+            </th>
+            <th style="width: 150px";>
+                @Html.DisplayNameFor(model => model.MayBayID)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaChuyenBay)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SanBayDi_ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SanBayDen_ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ThoiGianDuKienBay)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SoGhe_Hang1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SoGhe_Hang2)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MayBayID)
+                </td>
+                <td>
+                    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.ID }) |
+                    @Html.ActionLink("Xóa", "Delete", new { id = item.ID })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+</html>
+
+
+@section Scripts {
+    <script>
+        $('.searchSanBayDi_ID').select2();
+    </script>
+    <script>
+        $('.searchSanBayDen_ID').select2();
+    </script>
+    <script>
+        $('.searchMayBayID').select2();
+    </script>
+
+
+}

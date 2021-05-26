@@ -1,0 +1,68 @@
+﻿@model IEnumerable<TicketWeb.Data.ChuyenBay>
+
+@{
+    ViewData["Title"] = "BookTicket";
+    Layout = "_LayoutPortal3";
+}
+<style>
+    .header {
+        background-color: #1559b6;
+        text-align: center;
+        padding: 5px;
+        border-bottom: 2px ridge #ffffff;
+        font-size: 30px;
+        color: azure;
+        font-family: sans-serif;
+    }
+
+.btn_select { border-radius: 5px; color: #ffffff; background-image: url("https://olala.vn/images/ic_flight-gray.png");
+              padding: 10px; 
+
+}
+
+body { background-color: #90e3fc;
+       line-height: 3.5; 
+}
+</style>
+
+<head>
+    <title>Đặt Vé</title>
+    <div class="header">
+        <h1 class="head-title">ĐẶT VÉ</h1>
+    </div>
+</head>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SanBayDi_ID)            
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SanBayDen_ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ThoiGianDuKienBay)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SanBayDi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SanBayDen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ThoiGianDuKienBay)
+            </td>    
+            <td>
+                <a class="btn_select" >Chọn</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

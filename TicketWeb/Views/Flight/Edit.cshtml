@@ -1,0 +1,75 @@
+﻿@{
+
+    Layout = "_LayoutPortal2";
+}
+@model TicketWeb.Data.ChuyenBay
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Chỉnh sửa</h1>
+
+<h4>ChuyenBay</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="MaChuyenBay" class="control-label"></label>
+                <input asp-for="MaChuyenBay" class="form-control" />
+                <span asp-validation-for="MaChuyenBay" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SanBayDi_ID" class="control-label"></label>
+                <select class="SanBayDi_ID" asp-items="@ViewBag.SanBayDi" asp-for="SanBayDi_ID" id="SanBayDi_ID"></select>
+                <span asp-validation-for="SanBayDi_ID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SanBayDen_ID" class="control-label"></label>
+                <select class="SanBayDen_ID" asp-items="@ViewBag.SanBayDen" asp-for="SanBayDen_ID" id="SanBayDen_ID"></select>
+                <span asp-validation-for="SanBayDen_ID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ThoiGianDuKienBay" class="control-label"></label>
+                <input asp-for="ThoiGianDuKienBay" class="form-control" />
+                <span asp-validation-for="ThoiGianDuKienBay" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SoGhe_Hang1" class="control-label"></label>
+                <input asp-for="SoGhe_Hang1" class="form-control" />
+                <span asp-validation-for="SoGhe_Hang1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SoGhe_Hang2" class="control-label"></label>
+                <input asp-for="SoGhe_Hang2" class="form-control" />
+                <span asp-validation-for="SoGhe_Hang2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MayBayID" class="control-label"></label>
+                <select class="MayBayID" asp-items="@ViewBag.MayBay" asp-for="MayBayID" id="ChuyenBay_ID"></select>
+                <span asp-validation-for="MayBayID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Lưu" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Trở lại</a>
+</div>
+
+@section Scripts {
+    <script>
+        $('.SanBayDi_ID').select2();
+    </script>
+    <script>
+        $('.SanBayDen_ID').select2();
+    </script>
+    <script>
+        $('.MayBayID').select2();
+    </script>
+}
