@@ -36,14 +36,6 @@ namespace TicketWeb.Controllers
             VeMayBaylist.AddRange(VeMayBaylist2);
             ViewBag.ChuyenBay = VeMayBaylist;
 
-            var Userlist = new List<SelectListItem>() { new SelectListItem { Text = "" } };
-            var Userlist2 = _dbContext.Users.Select(x => new SelectListItem
-            {
-                Text = x.Email.ToString(),
-            }).ToList();
-            Userlist.AddRange(Userlist2);
-            ViewBag.UserEmail = Userlist;
-
             var UserIDlist = new List<SelectListItem>() { new SelectListItem { Text = "",Value ="" } };
             var UserIDlist2 = _dbContext.Users.Select(x => new SelectListItem
             {

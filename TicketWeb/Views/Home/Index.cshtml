@@ -150,12 +150,11 @@
                                         *@
                                     </div>
                                 </div>
-                                <div class="count-box w-100">
+                                <div class="count-box">
                                     <div class="d-flex">
                                         <div class="count-item d-flex">
                                             <div class="title-box">
-                                                <span class="type">Người lớn</span>
-                                                <span class="old">≥ 12 tuổi</span>
+                                                <span class="type">Số lượng</span>
                                             </div>
                                             <div class="box-input">
                                                 <input onclick="var result = document.getElementById('nguoilon'); var qty = result.value; if (!isNaN(qty) &amp; qty > 1) result.value--;return false;" type='button' value='-' />
@@ -163,6 +162,7 @@
                                                 <input onclick="var result = document.getElementById('nguoilon'); var qty = result.value; if( !isNaN(qty)) result.value++;return false;" type='button' value='+' />
                                             </div>
                                         </div>
+                                        @*
                                         <div class="count-item d-flex">
                                             <div class="title-box">
                                                 <span class="type">Trẻ em</span>
@@ -187,6 +187,7 @@
                                                 <input onclick="var result = document.getElementById('embe'); var qty = result.value; if( !isNaN(qty)) result.value++;return false;" type='button' value='+' />
                                             </div>
                                         </div>
+                                        *@
                                         <div class="btn_search">
                                             <div class="bookticket">
                                                 <a href="javascript:{}" onclick="document.getElementById('SearchFlightForm').submit();"

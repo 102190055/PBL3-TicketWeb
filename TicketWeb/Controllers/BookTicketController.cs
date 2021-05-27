@@ -7,6 +7,8 @@ using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using TicketWeb.Data;
+using TicketWeb.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace TicketWeb.Views.BookTicket
 {
@@ -21,8 +23,8 @@ namespace TicketWeb.Views.BookTicket
         // GET: BookTicketController
         public ActionResult Index(int start, int end,string ngaydi)
         {
-            var sanbaydi = _dbContext.SanBay.FirstOrDefault(x => x.ID == start)?.Name;
-            var sanbayden = _dbContext.SanBay.FirstOrDefault(x => x.ID == end)?.Name;
+            var sanbaydi = _dbContext.SanBay.FirstOrDefault(x => x.ID == start)?.KhuVuc;
+            var sanbayden = _dbContext.SanBay.FirstOrDefault(x => x.ID == end)?.KhuVuc;
 
             CultureInfo enUS = new CultureInfo("en-US");
             var ngayDuKien = DateTime.Now;
@@ -39,20 +41,14 @@ namespace TicketWeb.Views.BookTicket
                                     SanBayDi_ID = start,
                                     SoGhe_Hang1 = x.SoGhe_Hang1,
                                     SoGhe_Hang2 = x.SoGhe_Hang2,
-                                    ThoiGianDuKienBay = ngayDuKien,
+                                    ThoiGianDuKienBay = x.ThoiGianDuKienBay,
                                     ID = x.ID
                                 });
             return View(listFlight.ToList());
         }
 
-        // GET: BookTicketController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
         // GET: BookTicketController/Create
-        public ActionResult Create()
+        public ActionResult Booking()
         {
             return View();
         }
@@ -60,20 +56,25 @@ namespace TicketWeb.Views.BookTicket
         // POST: BookTicketController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Booking(VeMayBay model,int id,string InputName,string InputBirth,string InputPhone,string InputEmail)
         {
-            try
+            if (ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                model.ChuyenBay_ID = id;
+                model.TenKhach = InputName;
+                model.NgaySinh = DateTime.ParseExact(InputBirth,"dd/MM//yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                model.PhoneNumber = InputPhone;
+                model.Email = InputEmail;
+                model.NguoiDat_ID = "null";
+                _dbContext.VeMayBay.Add(model);
+                _dbContext.SaveChanges();
+                return RedirectToAction(nameof(Pay));
             }
-            catch
-            {
-                return View();
-            }
+            return View();
         }
 
         // GET: BookTicketController/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Pay(int id)
         {
             return View();
         }
@@ -81,7 +82,7 @@ namespace TicketWeb.Views.BookTicket
         // POST: BookTicketController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Pay(int id, IFormCollection collection)
         {
             try
             {

@@ -1386,3 +1386,5 @@ D:\PBL3-TicketWeb\TicketWeb\obj\Debug\net5.0\TicketWeb.dll
 D:\PBL3-TicketWeb\TicketWeb\obj\Debug\net5.0\ref\TicketWeb.dll
 D:\PBL3-TicketWeb\TicketWeb\obj\Debug\net5.0\TicketWeb.pdb
 D:\PBL3-TicketWeb\TicketWeb\obj\Debug\net5.0\TicketWeb.genruntimeconfig.cache
+D:\PBL3-TicketWeb\TicketWeb\obj\Debug\net5.0\Razor\Views\BookTicket\Booking.cshtml.g.cs
+D:\PBL3-TicketWeb\TicketWeb\obj\Debug\net5.0\Razor\Views\BookTicket\Pay.cshtml.g.cs

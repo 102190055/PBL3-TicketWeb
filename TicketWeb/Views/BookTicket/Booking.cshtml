@@ -1,28 +1,23 @@
-﻿@{
+﻿@model TicketWeb.Models.VeMayBay
 
-    Layout = "_LayoutPortal2";
-}
-@model TicketWeb.Models.VeMayBay
 
-@{
-    ViewData["Title"] = "Create";
-}
-<style>
-    body{
+@*Cho thêm hình máy bay mini trước chữ thông tin chuyến bay cho xịn*@
+<a>Thông tin chuyến bay</a>
+<div class="flight">
+    <div>
 
-    }
-</style>
-<h1>Thêm vé máy bay</h1>
-<hr />
+    </div>
+
+</div>
+
+
+
+@*Cho thêm hình user trước chữ thông tin khách hàng*@
+<a>Thông tin khách hàng</a>
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Booking">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="ChuyenBay_ID" class="control-label"></label>
-                <select class="ChuyenBay_ID" asp-items="@ViewBag.ChuyenBay" asp-for="ChuyenBay_ID" id="ChuyenBay_ID"></select>
-                <span asp-validation-for="ChuyenBay_ID" class="text-danger"></span>
-            </div>
             <div class="form-group">
                 <label asp-for="TenKhach" class="control-label"></label>
                 <input asp-for="TenKhach" class="form-control" />
@@ -44,23 +39,8 @@
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="NguoiDat_ID" class="control-label"></label>
-                <select class="NguoiDat_ID" asp-items="@ViewBag.UserID" asp-for="NguoiDat_ID" id="NguoiDat_ID"></select>
-                <span asp-validation-for="NguoiDat_ID" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Thêm" class="btn btn-primary" />
+                <input type="submit" value="Thanh Toán" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
-
-<div>
-    <a asp-action="Index">Trở lại</a>
-</div>
-
-@section Scripts {
-    <script>
-        $('.ChuyenBay_ID').select2();
-    </script>
-}

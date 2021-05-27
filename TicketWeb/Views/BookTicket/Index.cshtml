@@ -60,7 +60,7 @@ body { background-color: #90e3fc;
                 @Html.DisplayFor(modelItem => item.ThoiGianDuKienBay)
             </td>    
             <td>
-                <a class="btn_select" >Chọn</a>
+                @Html.ActionLink("Chọn", "Booking", new { id = item.ID }) 
             </td>
         </tr>
 }
