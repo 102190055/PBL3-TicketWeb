@@ -92,6 +92,7 @@ namespace TicketWeb.Controllers
                 oldItem.PhoneNumber = model.PhoneNumber;
                 oldItem.Email = model.Email;
                 oldItem.NguoiDat_ID = model.NguoiDat_ID;
+                oldItem.GiaVe = model.GiaVe;
                 _dbContext.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }

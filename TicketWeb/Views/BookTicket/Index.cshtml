@@ -36,13 +36,16 @@ body { background-color: #90e3fc;
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.SanBayDi_ID)            
+                @Html.DisplayNameFor(model => model.SanBayDi_ID)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.SanBayDen_ID)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ThoiGianDuKienBay)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GiaVe)
             </th>
             <th></th>
         </tr>
@@ -58,9 +61,12 @@ body { background-color: #90e3fc;
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ThoiGianDuKienBay)
-            </td>    
+            </td>
             <td>
-                @Html.ActionLink("Chọn", "Booking", new { id = item.ID }) 
+                @Html.DisplayFor(modelItem => item.GiaVe)
+            </td>
+            <td>
+                @Html.ActionLink("Chọn", "Booking", new { chuyenbayid = item.ID })
             </td>
         </tr>
 }

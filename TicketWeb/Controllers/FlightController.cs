@@ -196,6 +196,7 @@ namespace TicketWeb.Controllers
                 oldItem.SoGhe_Hang1 = model.SoGhe_Hang1;
                 oldItem.SoGhe_Hang2 = model.SoGhe_Hang2;
                 oldItem.ThoiGianDuKienBay = model.ThoiGianDuKienBay;
+                oldItem.GiaVe = model.GiaVe;
                 _dbContext.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }

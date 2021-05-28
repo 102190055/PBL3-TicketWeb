@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TicketWeb.Data;
 
 namespace TicketWeb.Migrations
 {
     [DbContext(typeof(TicketWebContext))]
-    partial class TicketWebContextModelSnapshot : ModelSnapshot
+    [Migration("20210528024536_InitDb3")]
+    partial class InitDb3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

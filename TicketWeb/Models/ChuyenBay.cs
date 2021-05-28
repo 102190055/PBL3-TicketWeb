@@ -33,6 +33,9 @@ namespace TicketWeb.Data
         [Required(ErrorMessage = "Bạn cần điền thông tin vào đây")]
         [Display(Name = "ID Máy bay")]
         public int MayBayID { get; set; }
+        [Required(ErrorMessage = "Bạn cần điền thông tin vào đây")]
+        [Display(Name = "Giá vé")]
+        public decimal GiaVe { get; set; }
 
         [NotMapped]
         public string SanBayDen { get; set; }

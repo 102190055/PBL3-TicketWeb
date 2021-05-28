@@ -8,10 +8,10 @@ namespace TicketWeb.Models
 {
     public class VeMayBay
     {
-        [Required(ErrorMessage = "Bạn cần điền thông tin vào đây")]
+        //[Required(ErrorMessage = "Bạn cần điền thông tin vào đây")]
         [Display(Name = "ID ")]
         public int ID { get; set; }
-        [Required(ErrorMessage = "Bạn cần điền thông tin vào đây")]
+        //[Required(ErrorMessage = "Bạn cần điền thông tin vào đây")]
         [Display(Name = "ID-Chuyến bay")]
         public int ChuyenBay_ID { get; set; }
         [Required(ErrorMessage = "Bạn cần điền thông tin vào đây")]
@@ -26,9 +26,12 @@ namespace TicketWeb.Models
         [Required(ErrorMessage = "Bạn cần điền thông tin vào đây")]
         [Display(Name = "Email")]
         public string  Email { get; set; }
-        [Required(ErrorMessage = "Bạn cần điền thông tin vào đây")]
+        //[Required(ErrorMessage = "Bạn cần điền thông tin vào đây")]
         [Display(Name = "ID-Người đặt")]
         public string NguoiDat_ID { get; set; }
+        [Required(ErrorMessage = "Bạn cần điền thông tin vào đây")]
+        [Display(Name = "Giá vé")]
+        public decimal GiaVe { get; set; }
 
     }
 }

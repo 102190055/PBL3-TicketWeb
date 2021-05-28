@@ -9,15 +9,18 @@ using System.Threading.Tasks;
 using TicketWeb.Data;
 using TicketWeb.Models;
 using Microsoft.AspNetCore.Identity;
+using TicketWeb.Areas.Identity.Data;
 
 namespace TicketWeb.Views.BookTicket
 {
     public class BookTicketController : Controller
     {
+        private UserManager<TicketWebUser> _userManager;
         private TicketWebContext _dbContext;
 
-        public BookTicketController(TicketWebContext dbCOntext)
+        public BookTicketController(TicketWebContext dbCOntext, UserManager<TicketWebUser> userManager)
         {
+            _userManager = userManager;
             _dbContext = dbCOntext;
         }
         // GET: BookTicketController
@@ -42,30 +45,35 @@ namespace TicketWeb.Views.BookTicket
                                     SoGhe_Hang1 = x.SoGhe_Hang1,
                                     SoGhe_Hang2 = x.SoGhe_Hang2,
                                     ThoiGianDuKienBay = x.ThoiGianDuKienBay,
-                                    ID = x.ID
+                                    ID = x.ID,
+                                    GiaVe = x.GiaVe
                                 });
             return View(listFlight.ToList());
         }
 
         // GET: BookTicketController/Create
-        public ActionResult Booking()
+        public ActionResult Booking(int chuyenbayid)
         {
-            return View();
+            var chuyenbay = _dbContext.ChuyenBays.FirstOrDefault(x => x.ID == chuyenbayid);
+            var vemaybay = new VeMayBay();
+            vemaybay.ChuyenBay_ID = chuyenbayid;
+            vemaybay.GiaVe = chuyenbay.GiaVe;
+
+            return View(vemaybay);
         }
 
         // POST: BookTicketController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Booking(VeMayBay model,int id,string InputName,string InputBirth,string InputPhone,string InputEmail)
+        public ActionResult Booking(VeMayBay model)
         {
             if (ModelState.IsValid)
             {
-                model.ChuyenBay_ID = id;
-                model.TenKhach = InputName;
-                model.NgaySinh = DateTime.ParseExact(InputBirth,"dd/MM//yyyy", System.Globalization.CultureInfo.InvariantCulture);
-                model.PhoneNumber = InputPhone;
-                model.Email = InputEmail;
-                model.NguoiDat_ID = "null";
+                //model.ChuyenBay_ID = id;
+                //model.NguoiDat_ID = _dbContext.Users.FirstOrDefault(x => x.Id == User.Identity.GetUserId());
+                var id = _userManager.GetUserId(this.User);
+                model.NguoiDat_ID = id;
+                //model.GiaVe = 0;
                 _dbContext.VeMayBay.Add(model);
                 _dbContext.SaveChanges();
                 return RedirectToAction(nameof(Pay));
