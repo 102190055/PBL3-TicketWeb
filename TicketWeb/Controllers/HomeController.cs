@@ -43,7 +43,10 @@ namespace TicketWeb.Controllers
 
             return View();
         }
-        
+        public IActionResult lienhe()
+        {
+            return View();
+        }
         public IActionResult Privacy()
         {
             return View();

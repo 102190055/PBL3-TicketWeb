@@ -76,31 +76,20 @@ namespace TicketWeb.Views.BookTicket
                 //model.GiaVe = 0;
                 _dbContext.VeMayBay.Add(model);
                 _dbContext.SaveChanges();
-                return RedirectToAction(nameof(Pay));
+                return RedirectToAction(nameof(Payment));
             }
             return View();
         }
 
-        // GET: BookTicketController/Edit/5
-        public ActionResult Pay(int id)
+        public ActionResult Payment(int id)
+        {
+            return View();
+        }
+        public ActionResult Success(int id)
         {
             return View();
         }
 
-        // POST: BookTicketController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Pay(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
 
         // GET: BookTicketController/Delete/5
         public ActionResult Delete(int id)

@@ -2,7 +2,14 @@
 
     Layout = "_LayoutPortal";
 }
-
+<style>
+    .sidebar-left .user_fix .login {
+        background-color: #03295f;
+        width: 100%;
+        border-radius: 15px;
+        padding: 18px 20px;
+    }
+</style>
 <div id="app">
     <main class="main-wrap">
         <div class="sidebar-left">
@@ -33,7 +40,7 @@
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="thanh-toan.html" class="menu-link">
+                        <a href="/Payment" class="menu-link">
                             <span class="icon">
                                 <img src="https://olala.vn/images/thanhtoan.svg" alt="" title="Thanh toán">
                             </span>
@@ -75,14 +82,10 @@
             else
             {
                 <div class="user_fix">
-                    <div class="logout">
-                        <a class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post"
-                           class="d-flex align-items-center">
-                            <p class="ic_user">
-                                <img src="images/ic_user.png" alt="">
-                            </p>
-                            <span>Đăng Xuất</span>
-                        </a>
+                    <div class="login">
+                        <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+                            <button type="submit" class="login" style="color:#ffffff">Đăng Xuất</button>
+                        </form>
                     </div>
                 </div>
             }
@@ -96,7 +99,7 @@
                 background-size: 100% 100%;
             }
         </style>
-        <form asp-action="Index" asp-controller="BookTicket" id="SearchFlightForm">
+        <form asp-action="Index" asp-controller="BookTicket" id="SearchFlightForm" style="display:flex;margin:auto;">
             <div class="search-box" id="do-my-vue">
                 <div class="search-box-title">
                     <h4>Đặt vé máy bay</h4>
@@ -143,10 +146,10 @@
                                             <input class="ngaydi" name="ngaydi" type="text" id="datepicker" style="width: 200px; height: 40px;border-radius: 10px;" />
                                         </div>
                                         @*
-                                        <div class="day-item">
-                                            <span class="box-title">ngày về</span>
-                                            <input class="ngayve" type="text" id="datepickerdi" style="width: 100px;height: 40px;border-radius: 10px;" />
-                                        </div>
+                                            <div class="day-item">
+                                                <span class="box-title">ngày về</span>
+                                                <input class="ngayve" type="text" id="datepickerdi" style="width: 100px;height: 40px;border-radius: 10px;" />
+                                            </div>
                                         *@
                                     </div>
                                 </div>
@@ -163,30 +166,30 @@
                                             </div>
                                         </div>
                                         @*
-                                        <div class="count-item d-flex">
-                                            <div class="title-box">
-                                                <span class="type">Trẻ em</span>
-                                                <span class="old">2 < 12 tuổi</span>
+                                            <div class="count-item d-flex">
+                                                <div class="title-box">
+                                                    <span class="type">Trẻ em</span>
+                                                    <span class="old">2 < 12 tuổi</span>
+                                                </div>
+                                                <div class="box-input">
+                                                    <input onclick="var result = document.getElementById('treem'); var qty = result.value; if( !isNaN(qty) &amp; qty > 0 ) result.value--;return false;" type='button' value='-' />
+                                                    <input id='treem' min='0' name='treem' type='text' value='0' />
+                                                    <input onclick="var result = document.getElementById('treem'); var qty = result.value; if( !isNaN(qty)) result.value++;return false;" type='button' value='+' />
+                                                </div>
                                             </div>
-                                            <div class="box-input">
-                                                <input onclick="var result = document.getElementById('treem'); var qty = result.value; if( !isNaN(qty) &amp; qty > 0 ) result.value--;return false;" type='button' value='-' />
-                                                <input id='treem' min='0' name='treem' type='text' value='0' />
-                                                <input onclick="var result = document.getElementById('treem'); var qty = result.value; if( !isNaN(qty)) result.value++;return false;" type='button' value='+' />
+                                            <div class="count-item d-flex">
+                                                <div class="title-box">
+                                                    <span class="type">Trẻ em</span>
+                                                    <span class="old">
+                                                        < 2 tuổi
+                                                    </span>
+                                                </div>
+                                                <div class="box-input">
+                                                    <input onclick="var result = document.getElementById('embe'); var qty = result.value; if( !isNaN(qty) &amp; qty > 0 ) result.value--;return false;" type='button' value='-' />
+                                                    <input id='embe' min='0' name='embe' type='text' value='0' />
+                                                    <input onclick="var result = document.getElementById('embe'); var qty = result.value; if( !isNaN(qty)) result.value++;return false;" type='button' value='+' />
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="count-item d-flex">
-                                            <div class="title-box">
-                                                <span class="type">Trẻ em</span>
-                                                <span class="old">
-                                                    < 2 tuổi
-                                                </span>
-                                            </div>
-                                            <div class="box-input">
-                                                <input onclick="var result = document.getElementById('embe'); var qty = result.value; if( !isNaN(qty) &amp; qty > 0 ) result.value--;return false;" type='button' value='-' />
-                                                <input id='embe' min='0' name='embe' type='text' value='0' />
-                                                <input onclick="var result = document.getElementById('embe'); var qty = result.value; if( !isNaN(qty)) result.value++;return false;" type='button' value='+' />
-                                            </div>
-                                        </div>
                                         *@
                                         <div class="btn_search">
                                             <div class="bookticket">
@@ -204,14 +207,14 @@
                 </div>
             </div>
         </form>
-</main>
+    </main>
 </div>
 
 @section Scripts {
     <script>
         $('.noixuatphat').select2();
         $('.noiden').select2();
-        
+
     </script>
 }
 
