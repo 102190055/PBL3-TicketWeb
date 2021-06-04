@@ -8,61 +8,137 @@
     ViewData["Title"] = "Create";
 }
 <style>
-    body{
-
+    body {
+        font-family: Arial;
+        font-size: 17px;
+        padding: 8px;
+        background-image: url("https://images.wallpaperscraft.com/image/plane_sky_boeing_clouds_68146_1600x900.jpg" );
     }
-</style>
-<h1>Thêm vé máy bay</h1>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="ChuyenBay_ID" class="control-label"></label>
-                <select class="ChuyenBay_ID" asp-items="@ViewBag.ChuyenBay" asp-for="ChuyenBay_ID" id="ChuyenBay_ID"></select>
-                <span asp-validation-for="ChuyenBay_ID" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TenKhach" class="control-label"></label>
-                <input asp-for="TenKhach" class="form-control" />
-                <span asp-validation-for="TenKhach" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="NgaySinh" class="control-label"></label>
-                <input asp-for="NgaySinh" class="form-control" />
-                <span asp-validation-for="NgaySinh" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PhoneNumber" class="control-label"></label>
-                <input asp-for="PhoneNumber" class="form-control" />
-                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="NguoiDat_ID" class="control-label"></label>
-                <select class="NguoiDat_ID" asp-items="@ViewBag.UserID" asp-for="NguoiDat_ID" id="NguoiDat_ID"></select>
-                <span asp-validation-for="NguoiDat_ID" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="GiaVe" class="control-label"></label>
-                <input asp-for="GiaVe" class="form-control" />
-                <span asp-validation-for="GiaVe" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Thêm" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
 
-<div>
-    <a asp-action="Index">Trở lại</a>
-</div>
+    .form_input {
+        padding: 8px 20px;
+        margin: 24px -20px;
+        box-shadow: none !important;
+        background-color: #E7E9EB;
+        border-radius: 5px;
+        width: 700px;
+        height: 800px;
+        margin: auto;
+    }
+
+    .input {
+        width: 320%;
+        padding: 1px 0px;
+        border: 1px solid #dedede;
+        font-size: 20px;
+        color: rgb(36, 36, 36);
+        outline: none;
+        border-radius: 3px;
+    }
+
+        .input:focus {
+            border-color: #1dbfaf;
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0,8%), 0 0 8px rgba(29, 191, 175, 60%)
+        }
+
+    .btn-group {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .btn_them {
+        text-align: center;
+        color: red;
+        display: inline-block;
+        border-radius: 8px;
+        border: 2px solid red;
+    }
+
+        .btn_them:hover {
+            color: #fff;
+            background-color: red;
+            border: 2px solid transparent;
+        }
+
+    .btn_back {
+        text-align: center;
+        /* padding: 10px; */
+        color: deepskyblue;
+        border-radius: 8px;
+        border: 2px solid deepskyblue;
+        padding: 1px 5px 0 5px;
+    }
+
+        .btn_back:hover {
+            color: #fff;
+            background-color: deepskyblue;
+            border: 2px solid transparent;
+            text-decoration: none;
+        }
+
+        .btn_back a:hover {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .btn_back a {
+            color: deepskyblue;
+        }
+</style>
+<h1 style="font-family:Arial;text-align:center;">Thêm Vé Máy Bay</h1>
+<body>
+    <hr />
+    <div class="form_input">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="ChuyenBay_ID" class="control-label"></label>
+                    <select class="ChuyenBay_ID" asp-items="@ViewBag.ChuyenBay" asp-for="ChuyenBay_ID" id="ChuyenBay_ID"></select>
+                    <span asp-validation-for="ChuyenBay_ID" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="TenKhach" class="control-label"></label>
+                    <input class="input" asp-for="TenKhach" class="form-control" />
+                    <span asp-validation-for="TenKhach" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="NgaySinh" class="control-label"></label>
+                    <input class="input" asp-for="NgaySinh" class="form-control" />
+                    <span asp-validation-for="NgaySinh" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PhoneNumber" class="control-label"></label>
+                    <input class="input" asp-for="PhoneNumber" class="form-control" />
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input class="input" asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="NguoiDat_ID" class="control-label"></label>
+                    <select class="NguoiDat_ID" asp-items="@ViewBag.UserID" asp-for="NguoiDat_ID" id="NguoiDat_ID"></select>
+                    <span asp-validation-for="NguoiDat_ID" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="GiaVe" class="control-label"></label>
+                    <input class="input" asp-for="GiaVe" class="form-control" />
+                    <span asp-validation-for="GiaVe" class="text-danger"></span>
+                </div>
+                <div class="btn-group">
+                    <div>
+                        <input type="submit" value="Thêm" class="btn_them" />
+                    </div>
+                    <div class="btn_back">
+                        <a asp-action="Index">Trở lại</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
 
 @section Scripts {
     <script>

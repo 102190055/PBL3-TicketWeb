@@ -70,7 +70,8 @@ body { background-image: url("https://img2.thuthuatphanmem.vn/uploads/2019/03/02
 <head>
     <title>Quản lý chuyến bay</title>
     <div class="header">
-        <h1 class="header--title" >QUẢN LÝ CHUYẾN BAY</h1>
+        <a href="/Admin" style="color:#ffffff">Admin</a>
+        <h1 class="header--title">QUẢN LÝ CHUYẾN BAY</h1>
     </div>
 </head>
 <div style="text-align:center">
@@ -110,11 +111,12 @@ body { background-image: url("https://img2.thuthuatphanmem.vn/uploads/2019/03/02
             @Html.TextBox("searchSoGhe_Hang2")
         </div>
     </div>
+    <label for="searchMayBayID">Máy bay</label>
     <select class="searchMayBayID" asp-items="@ViewBag.MayBay" name="searchMayBayID" id="searchMayBayID" style="width:200px;"></select>
     <input type="submit" value="Tìm" />
     <button>Hủy tìm kiếm</button>
-    <p style="text-align:right";>
-    <a class="btn_add" asp-action="Create">Thêm chuyến bay</a>
+    <p style="text-align:right" ;>
+        <a class="btn_add" asp-action="Create">Thêm chuyến bay</a>
     </p>
 </div>
     }

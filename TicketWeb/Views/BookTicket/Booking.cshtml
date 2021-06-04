@@ -1,48 +1,78 @@
 ﻿@model TicketWeb.Models.VeMayBay
 
 
-@*Cho thêm hình máy bay mini trước chữ thông tin chuyến bay cho xịn*@
-<a>Thông tin chuyến bay</a>
-<div class="flight">
-    <div>
+<style>
+    body {
+        font-family: Arial;
+        font-size: 17px;
+        padding: 8px;
+    }
 
+    .form_input {
+        padding: 8px 20px;
+        margin: 24px -20px;
+        box-shadow: none !important;
+        background-color: #E7E9EB;
+        border-radius: 5px;
+        width: 370px;
+        height: 550px;
+        margin: auto;
+    }
+
+    .input {
+        width: 100%;
+        padding: 10px 0px;
+        border: none;
+        font-size: 24px;
+        color: rgb(36, 36, 36);
+        outline: none;
+    }
+
+    .btn_thanhtoan {
+        text-align: center;
+        padding: 10px;
+        background-color: #7CFC00;
+        color: #ffff;
+        display: inline-block;
+        border: aliceblue;
+    }
+</style>
+
+
+<body>
+    <div class="form_input">
+        <h1 style="text-align:center">Thông tin khách hàng</h1>
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="Booking">
+                    <input type="hidden" asp-for="ChuyenBay_ID" />
+                    <input type="hidden" asp-for="GiaVe" />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group" style="margin-bottom: 30px;">
+                        <label asp-for="TenKhach" class="control-label" style="font-size: 20px;"></label>
+                        <input class="input" asp-for="TenKhach" class="form-control" />
+                        <span asp-validation-for="TenKhach" class="text-danger"></span>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 30px;">
+                        <label asp-for="NgaySinh" class="control-label" style="font-size: 20px;"></label>
+                        <input class="input" asp-for="NgaySinh" class="form-control" />
+                        <span asp-validation-for="NgaySinh" class="text-danger"></span>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 30px;">
+                        <label asp-for="PhoneNumber" class="control-label" style="font-size: 20px;"></label>
+                        <input class="input" asp-for="PhoneNumber" class="form-control" />
+                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 30px;">
+                        <label asp-for="Email" class="control-label"></label>
+                        <input class="input" asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group" style="text-align:center">
+                        <input type="submit" value="Thanh Toán" class="btn_thanhtoan" />
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-
-</div>
-
-
-
-@*Cho thêm hình user trước chữ thông tin khách hàng*@
-<a>Thông tin khách hàng</a>
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Booking">
-            <input type="hidden" asp-for="ChuyenBay_ID" />
-            <input type="hidden" asp-for="GiaVe" />
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="TenKhach" class="control-label"></label>
-                <input asp-for="TenKhach" class="form-control" />
-                <span asp-validation-for="TenKhach" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="NgaySinh" class="control-label"></label>
-                <input asp-for="NgaySinh" class="form-control" />
-                <span asp-validation-for="NgaySinh" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PhoneNumber" class="control-label"></label>
-                <input asp-for="PhoneNumber" class="form-control" />
-                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Thanh Toán" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
+</body>

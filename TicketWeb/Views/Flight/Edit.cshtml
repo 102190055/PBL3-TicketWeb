@@ -8,17 +8,93 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Chỉnh sửa</h1>
+<style>
+    body {
+        font-family: Arial;
+        font-size: 17px;
+        padding: 8px;
+        background-image: url("https://images.wallpaperscraft.com/image/plane_sky_boeing_clouds_68146_1600x900.jpg" );
+    }
 
-<h4>ChuyenBay</h4>
+    .form_input {
+        padding: 8px 20px;
+        margin: 24px -20px;
+        box-shadow: none !important;
+        background-color: #E7E9EB;
+        border-radius: 5px;
+        width: 700px;
+        height: 800px;
+        margin: auto;
+    }
+
+    .input {
+        width: 320%;
+        padding: 1px 0px;
+        border: 1px solid #dedede;
+        font-size: 20px;
+        color: rgb(36, 36, 36);
+        outline: none;
+        border-radius: 3px;
+    }
+
+        .input:focus {
+            border-color: #1dbfaf;
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0,8%), 0 0 8px rgba(29, 191, 175, 60%)
+        }
+
+    .btn-group {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .btn_them {
+        text-align: center;
+        color: red;
+        display: inline-block;
+        border-radius: 8px;
+        border: 2px solid red;
+    }
+
+        .btn_them:hover {
+            color: #fff;
+            background-color: red;
+            border: 2px solid transparent;
+        }
+
+    .btn_back {
+        text-align: center;
+        /* padding: 10px; */
+        color: deepskyblue;
+        border-radius: 8px;
+        border: 2px solid deepskyblue;
+        padding: 1px 5px 0 5px;
+    }
+
+        .btn_back:hover {
+            color: #fff;
+            background-color: deepskyblue;
+            border: 2px solid transparent;
+            text-decoration: none;
+        }
+
+        .btn_back a:hover {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .btn_back a {
+            color: deepskyblue;
+        }
+</style>
+<h1 style="font-family:Arial;text-align:center;">Chỉnh Sửa Thông Tin Chuyến Bay</h1>
 <hr />
-<div class="row">
+<div class="form_input">
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="MaChuyenBay" class="control-label"></label>
-                <input asp-for="MaChuyenBay" class="form-control" />
+                <input class="input" asp-for="MaChuyenBay" class="form-control" />
                 <span asp-validation-for="MaChuyenBay" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -33,17 +109,17 @@
             </div>
             <div class="form-group">
                 <label asp-for="ThoiGianDuKienBay" class="control-label"></label>
-                <input asp-for="ThoiGianDuKienBay" class="form-control" />
+                <input class="input" asp-for="ThoiGianDuKienBay" class="form-control" />
                 <span asp-validation-for="ThoiGianDuKienBay" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="SoGhe_Hang1" class="control-label"></label>
-                <input asp-for="SoGhe_Hang1" class="form-control" />
+                <input class="input" asp-for="SoGhe_Hang1" class="form-control" />
                 <span asp-validation-for="SoGhe_Hang1" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="SoGhe_Hang2" class="control-label"></label>
-                <input asp-for="SoGhe_Hang2" class="form-control" />
+                <input class="input" asp-for="SoGhe_Hang2" class="form-control" />
                 <span asp-validation-for="SoGhe_Hang2" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -53,18 +129,19 @@
             </div>
             <div class="form-group">
                 <label asp-for="GiaVe" class="control-label"></label>
-                <input asp-for="GiaVe" class="form-control" />
+                <input class="input" asp-for="GiaVe" class="form-control" />
                 <span asp-validation-for="GiaVe" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Lưu" class="btn btn-primary" />
+            <div class="btn-group">
+                <div>
+                    <input type="submit" value="Lưu" class="btn_them" />
+                </div>
+                <div class="btn_back">
+                    <a asp-action="Index">Trở lại</a>
+                </div>
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Trở lại</a>
 </div>
 
 @section Scripts {

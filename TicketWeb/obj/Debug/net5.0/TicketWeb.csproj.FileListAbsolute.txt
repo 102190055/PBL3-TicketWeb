@@ -1389,3 +1389,4 @@ D:\PBL3-TicketWeb\TicketWeb\obj\Debug\net5.0\TicketWeb.genruntimeconfig.cache
 D:\PBL3-TicketWeb\TicketWeb\obj\Debug\net5.0\Razor\Views\BookTicket\Booking.cshtml.g.cs
 D:\PBL3-TicketWeb\TicketWeb\obj\Debug\net5.0\Razor\Views\BookTicket\Payment.cshtml.g.cs
 D:\PBL3-TicketWeb\TicketWeb\obj\Debug\net5.0\Razor\Views\BookTicket\Success.cshtml.g.cs
+D:\PBL3-TicketWeb\TicketWeb\obj\Debug\net5.0\Razor\Views\Home\KhuyenMai.cshtml.g.cs

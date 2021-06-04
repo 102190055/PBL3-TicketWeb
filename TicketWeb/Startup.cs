@@ -48,6 +48,16 @@ namespace TicketWeb
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<TicketWebContext>();
             services.AddControllersWithViews();
+            services.ConfigureApplicationCookie(options =>
+            {
+                // Cookie settings
+                options.Cookie.HttpOnly = true;
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
+
+                options.LoginPath = "/Login";
+                options.AccessDeniedPath = "/Identity/Account/AccessDenied";
+                options.SlidingExpiration = true;
+            });
             services.Configure<IdentityOptions>(options => {
                 // Thiết lập về Password
                 options.Password.RequireDigit = false; // Không bắt phải có số

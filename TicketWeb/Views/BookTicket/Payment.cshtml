@@ -4,112 +4,114 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
-body {
-  font-family: Arial;
-  font-size: 17px;
-  padding: 8px;
-}
+        body {
+            font-family: Arial;
+            font-size: 17px;
+            padding: 8px;
+        }
 
-* {
-  box-sizing: border-box;
-}
+        * {
+            box-sizing: border-box;
+        }
 
-.row {
-  display: -ms-flexbox; /* IE10 */
-  display: flex;
-  -ms-flex-wrap: wrap; /* IE10 */
-  flex-wrap: wrap;
-  margin: 0 -16px;
-}
+        .row {
+            display: -ms-flexbox; /* IE10 */
+            display: flex;
+            -ms-flex-wrap: wrap; /* IE10 */
+            flex-wrap: wrap;
+            margin: 0 -16px;
+        }
 
-.col-25 {
-  -ms-flex: 25%; /* IE10 */
-  flex: 25%;
-}
+        .col-25 {
+            -ms-flex: 25%; /* IE10 */
+            flex: 25%;
+        }
 
-.col-50 {
-  -ms-flex: 50%; /* IE10 */
-  flex: 50%;
-}
+        .col-50 {
+            -ms-flex: 50%; /* IE10 */
+            flex: 50%;
+        }
 
-.col-75 {
-  -ms-flex: 75%; /* IE10 */
-  flex: 75%;
-}
+        .col-75 {
+            -ms-flex: 75%; /* IE10 */
+            flex: 75%;
+        }
 
-.col-25,
-.col-50,
-.col-75 {
-  padding: 0 16px;
-}
+        .col-25,
+        .col-50,
+        .col-75 {
+            padding: 0 16px;
+        }
 
-.container {
-  background-color: #f2f2f2;
-  padding: 5px 20px 15px 20px;
-  border: 1px solid lightgrey;
-  border-radius: 3px;
-}
+        .container {
+            background-color: #f2f2f2;
+            padding: 5px 20px 15px 20px;
+            border: 1px solid lightgrey;
+            border-radius: 3px;
+        }
 
-input[type=text] {
-  width: 100%;
-  margin-bottom: 20px;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-}
+        input[type=text] {
+            width: 100%;
+            margin-bottom: 20px;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
 
-label {
-  margin-bottom: 10px;
-  display: block;
-}
+        label {
+            margin-bottom: 10px;
+            display: block;
+        }
 
-.icon-container {
-  margin-bottom: 20px;
-  padding: 7px 0;
-  font-size: 24px;
-}
+        .icon-container {
+            margin-bottom: 20px;
+            padding: 7px 0;
+            font-size: 24px;
+        }
 
-.btn {
-  background-color: #04AA6D;
-  color: white;
-  padding: 12px;
-  margin: 10px 0;
-  border: none;
-  width: 100%;
-  border-radius: 3px;
-  cursor: pointer;
-  font-size: 17px;
-}
+        .btn {
+            background-color: #04AA6D;
+            color: white;
+            padding: 12px;
+            margin: 10px 0;
+            border: none;
+            width: 100%;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 17px;
+        }
 
-.btn:hover {
-  background-color: #45a049;
-}
+            .btn:hover {
+                background-color: #45a049;
+            }
 
-a {
-  color: #2196F3;
-}
+        a {
+            color: #2196F3;
+        }
 
-hr {
-  border: 1px solid lightgrey;
-}
+        hr {
+            border: 1px solid lightgrey;
+        }
 
-span.price {
-  float: right;
-  color: grey;
-}
+        span.price {
+            float: right;
+            color: grey;
+        }
 
-.media(max-width: 800px) {
-  .row {
-    flex-direction: column-reverse;
-  }
-  .col-25 {
-    margin-bottom: 20px;
-  }
-}
+        .media(max-width: 800px) {
+            .row
+
+        {
+            flex-direction: column-reverse;
+        }
+
+        .col-25 {
+            margin-bottom: 20px;
+        }
+        }
     </style>
 </head>
 <body>
-
     <h2>Thanh Toán</h2>
     <p>Điền thông tin chi tiết khách hàng tại đây.</p>
     <div class="row">
@@ -152,7 +154,7 @@ span.price {
                             </div>
                             <label for="cname">Tên Chủ Thẻ</label>
                             <input type="text" id="cname" name="cardname" placeholder="Nguyễn Văn A">
-                            <label for="ccnum">Credit card number</label>
+                            <label for="ccnum">Số Thẻ</label>
                             <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
                             <label for="expmonth">Tháng Hết Hạn</label>
                             <input type="text" id="expmonth" name="expmonth" placeholder="Tháng 1">
@@ -172,19 +174,10 @@ span.price {
                     <label>
                         <input type="checkbox" checked="checked" name="sameadr"> Địa chỉ trùng với thanh toán
                     </label>
-                    <a href="/BookTicket/Success">Thanh toán</a>
+                    <div style="text-align:center;display:flex">
+                        <a href="/BookTicket/Success" style="text-decoration: none" class="btn">Thanh Toán</a>
+                    </div>
                 </form>
-            </div>
-        </div>
-        <div class="col-25">
-            <div class="container">
-                <h4>Danh sách vé đã đặt <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>4</b></span></h4>
-                <p><a href="#">Vé Máy Bay A001</a> <span class="price">500.000</span></p>
-                <p><a href="#">Vé Máy Bay A002</a> <span class="price">750.000</span></p>
-                <p><a href="#">Vé Máy Bay A003</a> <span class="price">350.000</span></p>
-                <p><a href="#">Vé Máy Bay A004</a> <span class="price">400.000</span></p>
-                <hr>
-                <p>Tổng <span class="price" style="color:black"><b>2.000.000</b></span></p>
             </div>
         </div>
     </div>

@@ -43,7 +43,7 @@ namespace TicketWeb.Controllers
 
             return View();
         }
-        public IActionResult lienhe()
+        public IActionResult KhuyenMai()
         {
             return View();
         }
