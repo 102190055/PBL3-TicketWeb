@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using TicketWeb.Data;
 
 namespace TicketWeb.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class SanBayController : Controller
     {
         private TicketWebContext _dbContext;

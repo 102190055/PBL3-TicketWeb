@@ -42,8 +42,7 @@ namespace TicketWeb.Views.BookTicket
                                     SanBayDen_ID = end,
                                     SanBayDi = sanbaydi,
                                     SanBayDi_ID = start,
-                                    SoGhe_Hang1 = x.SoGhe_Hang1,
-                                    SoGhe_Hang2 = x.SoGhe_Hang2,
+                                    SoGhe = x.SoGhe,                                    
                                     ThoiGianDuKienBay = x.ThoiGianDuKienBay,
                                     ID = x.ID,
                                     GiaVe = x.GiaVe
@@ -51,7 +50,7 @@ namespace TicketWeb.Views.BookTicket
             return View(listFlight.ToList());
         }
 
-        // GET: BookTicketController/Create
+
         public ActionResult Booking(int chuyenbayid)
         {
             var chuyenbay = _dbContext.ChuyenBays.FirstOrDefault(x => x.ID == chuyenbayid);
@@ -62,18 +61,14 @@ namespace TicketWeb.Views.BookTicket
             return View(vemaybay);
         }
 
-        // POST: BookTicketController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Booking(VeMayBay model)
         {
             if (ModelState.IsValid)
             {
-                //model.ChuyenBay_ID = id;
-                //model.NguoiDat_ID = _dbContext.Users.FirstOrDefault(x => x.Id == User.Identity.GetUserId());
                 var id = _userManager.GetUserId(this.User);
                 model.NguoiDat_ID = id;
-                //model.GiaVe = 0;
                 _dbContext.VeMayBay.Add(model);
                 _dbContext.SaveChanges();
                 return RedirectToAction(nameof(Payment));
@@ -81,7 +76,14 @@ namespace TicketWeb.Views.BookTicket
             return View();
         }
 
-        public ActionResult Payment(int id)
+        public ActionResult Payment(int chuyenbayid)
+        {
+            var vemaybay = _dbContext.VeMayBay.Where(x => x.ChuyenBay_ID == chuyenbayid);
+            return View(vemaybay.ToList());
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Payment(VeMayBay model)
         {
             return View();
         }

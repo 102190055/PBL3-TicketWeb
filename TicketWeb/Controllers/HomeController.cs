@@ -15,7 +15,7 @@ namespace TicketWeb.Controllers
     [AllowAnonymous]
     public class HomeController : Controller
     {
-        //private readonly ILogger<HomeController> _logger;
+        
         private TicketWebContext _dbContext;
         public HomeController(TicketWebContext dbContext)
         {
@@ -44,6 +44,14 @@ namespace TicketWeb.Controllers
             return View();
         }
         public IActionResult KhuyenMai()
+        {
+            return View();
+        }
+        public IActionResult Camnang()
+        {
+            return View();
+        }
+        public IActionResult Lienhe()
         {
             return View();
         }

@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@model IEnumerable<TicketWeb.Models.VeMayBay>
+<!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -181,6 +182,54 @@
             </div>
         </div>
     </div>
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ChuyenBay_ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TenKhach)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NgaySinh)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
 
+            <th>
+                @Html.DisplayNameFor(model => model.GiaVe)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ChuyenBay_ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenKhach)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NgaySinh)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GiaVe)
+                </td>
+            </tr>
+        }
+    </tbody>
 </body>
 </html>

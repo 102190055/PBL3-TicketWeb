@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
@@ -10,6 +11,7 @@ using TicketWeb.Models;
 
 namespace TicketWeb.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class VeMayBayController : Controller
     {
         private TicketWebContext _dbContext;

@@ -16,7 +16,7 @@ using TicketWeb.Models;
 
 namespace TicketWeb.Controllers
 {
-    //[Authorize(Roles = "admin")]
+    [Authorize(Roles = "Admin")]
     public class FlightController : Controller
     {
         private TicketWebContext _dbContext;
@@ -25,14 +25,14 @@ namespace TicketWeb.Controllers
         {
             _dbContext = dbCOntext;
         }
-        // GET: FlightController
         
-        public ActionResult Index(string searchMaChuyenBay, string searchSanBayDen_ID, string searchSanBayDi_ID,string searchThoiGianDuKienBay,string searchSoGhe_Hang1,string searchSoGhe_Hang2,string searchMayBayID)
+
+        public ActionResult Index(FlightIndexViewModel model)
         {
             var SanBayDilist = new List<SelectListItem>() { new SelectListItem { Text = "", Value = "" } };
             var SanBayDilist2 = _dbContext.SanBay.Select(x => new SelectListItem
             {
-                Text =  x.Name,
+                Text = x.Name,
                 Value = x.ID.ToString()
             }).ToList();
             SanBayDilist.AddRange(SanBayDilist2);
@@ -58,46 +58,41 @@ namespace TicketWeb.Controllers
 
 
             var listFlight = _dbContext.ChuyenBays.AsQueryable();
-            if (!string.IsNullOrEmpty(searchMaChuyenBay))
+            if (!string.IsNullOrEmpty(model.searchMaChuyenBay))
             {
-                listFlight = listFlight.Where(s => s.MaChuyenBay.StartsWith(searchMaChuyenBay));
+                listFlight = listFlight.Where(s => s.MaChuyenBay.StartsWith(model.searchMaChuyenBay));
             }
 
-            if(!string.IsNullOrEmpty(searchSanBayDen_ID))
+            if (!string.IsNullOrEmpty(model.searchSanBayDen_ID))
             {
-                listFlight = listFlight.Where(s => s.SanBayDen_ID.ToString() == searchSanBayDen_ID);
+                listFlight = listFlight.Where(s => s.SanBayDen_ID.ToString() == model.searchSanBayDen_ID);
             }
 
-            if (!string.IsNullOrEmpty(searchSanBayDi_ID))
+            if (!string.IsNullOrEmpty(model.searchSanBayDi_ID))
             {
-                listFlight = listFlight.Where(s => s.SanBayDi_ID.ToString() == searchSanBayDi_ID);
+                listFlight = listFlight.Where(s => s.SanBayDi_ID.ToString() == model.searchSanBayDi_ID);
             }
 
-            if (!string.IsNullOrEmpty(searchThoiGianDuKienBay))
+            if (!string.IsNullOrEmpty(model.searchThoiGianDuKienBay))
             {
                 CultureInfo enUS = new CultureInfo("en-US");
                 var ngayDuKien = DateTime.Now;
-                if (DateTime.TryParseExact(searchThoiGianDuKienBay, "dd/MM/yyyy", enUS, DateTimeStyles.None, out ngayDuKien))
+                if (DateTime.TryParseExact(model.searchThoiGianDuKienBay, "dd/MM/yyyy", enUS, DateTimeStyles.None, out ngayDuKien))
                 {
                     listFlight = listFlight.Where(s => s.ThoiGianDuKienBay.Date.Date >= ngayDuKien.Date && s.ThoiGianDuKienBay.Date.Date < ngayDuKien.Date.AddDays(1));
                 }
             }
 
-            if (!string.IsNullOrEmpty(searchSoGhe_Hang1))
+            if (!string.IsNullOrEmpty(model.searchSoGhe))
             {
-                listFlight = listFlight.Where(s => s.SoGhe_Hang1.ToString() == searchSoGhe_Hang1);
+                listFlight = listFlight.Where(s => s.SoGhe.ToString() == model.searchSoGhe);
             }
-
-            if (!string.IsNullOrEmpty(searchSoGhe_Hang2))
+            if (!string.IsNullOrEmpty(model.searchMayBayID))
             {
-                listFlight = listFlight.Where(s => s.SoGhe_Hang2.ToString() == searchSoGhe_Hang2);
+                listFlight = listFlight.Where(s => s.MayBayID.ToString() == model.searchMayBayID);
             }
-
-            if (!string.IsNullOrEmpty(searchMayBayID))
-            {
-                listFlight = listFlight.Where(s => s.MayBayID.ToString() == searchMayBayID);
-            }
-            return View(listFlight.ToList());
+            model.ChuyenBay = listFlight.ToList();
+            return View(model);
         }
 
         // GET: FlightController/Create
@@ -137,13 +132,13 @@ namespace TicketWeb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(ChuyenBay collection)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 _dbContext.ChuyenBays.Add(collection);
                 _dbContext.SaveChanges();
                 return RedirectToAction(nameof(Index));
-            }           
-                return View();           
+            }
+            return View();
         }
 
         // GET: FlightController/Edit/5
@@ -193,8 +188,7 @@ namespace TicketWeb.Controllers
                 oldItem.MayBayID = model.MayBayID;
                 oldItem.SanBayDen_ID = model.SanBayDen_ID;
                 oldItem.SanBayDi_ID = model.SanBayDi_ID;
-                oldItem.SoGhe_Hang1 = model.SoGhe_Hang1;
-                oldItem.SoGhe_Hang2 = model.SoGhe_Hang2;
+                oldItem.SoGhe = model.SoGhe;
                 oldItem.ThoiGianDuKienBay = model.ThoiGianDuKienBay;
                 oldItem.GiaVe = model.GiaVe;
                 _dbContext.SaveChanges();

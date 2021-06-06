@@ -25,11 +25,8 @@ namespace TicketWeb.Data
         [Display(Name = "Thời gian dự kiến bay")]
         public DateTime ThoiGianDuKienBay { get; set; }
         [Required(ErrorMessage = "Bạn cần điền thông tin vào đây")]
-        [Display(Name = "Số ghế hạng 1")]
-        public int SoGhe_Hang1 { get; set; }
-        [Required(ErrorMessage = "Bạn cần điền thông tin vào đây")]
-        [Display(Name = "Số ghế hạng 2")]
-        public int SoGhe_Hang2 { get; set; }
+        [Display(Name = "Số ghế ")]
+        public int SoGhe { get; set; }
         [Required(ErrorMessage = "Bạn cần điền thông tin vào đây")]
         [Display(Name = "ID Máy bay")]
         public int MayBayID { get; set; }

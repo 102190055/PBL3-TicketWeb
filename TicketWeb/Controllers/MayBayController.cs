@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using TicketWeb.Models;
 
 namespace TicketWeb.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class MayBayController : Controller
     {
         private TicketWebContext _dbContext;

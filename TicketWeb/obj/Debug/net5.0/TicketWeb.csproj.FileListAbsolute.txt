@@ -1390,3 +1390,5 @@ D:\PBL3-TicketWeb\TicketWeb\obj\Debug\net5.0\Razor\Views\BookTicket\Booking.csht
 D:\PBL3-TicketWeb\TicketWeb\obj\Debug\net5.0\Razor\Views\BookTicket\Payment.cshtml.g.cs
 D:\PBL3-TicketWeb\TicketWeb\obj\Debug\net5.0\Razor\Views\BookTicket\Success.cshtml.g.cs
 D:\PBL3-TicketWeb\TicketWeb\obj\Debug\net5.0\Razor\Views\Home\KhuyenMai.cshtml.g.cs
+D:\PBL3-TicketWeb\TicketWeb\obj\Debug\net5.0\Razor\Views\Home\Camnang.cshtml.g.cs
+D:\PBL3-TicketWeb\TicketWeb\obj\Debug\net5.0\Razor\Views\Home\Lienhe.cshtml.g.cs
