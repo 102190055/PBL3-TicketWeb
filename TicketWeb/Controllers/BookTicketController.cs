@@ -10,6 +10,7 @@ using TicketWeb.Data;
 using TicketWeb.Models;
 using Microsoft.AspNetCore.Identity;
 using TicketWeb.Areas.Identity.Data;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace TicketWeb.Views.BookTicket
 {
@@ -51,8 +52,29 @@ namespace TicketWeb.Views.BookTicket
         }
 
 
-        public ActionResult Booking(int chuyenbayid)
+        public ActionResult Booking(int chuyenbayid,int start,int end)
         {
+            var sanbaydi = _dbContext.SanBay.FirstOrDefault(x => x.ID == start)?.KhuVuc;
+            var sanbayden = _dbContext.SanBay.FirstOrDefault(x => x.ID == end)?.KhuVuc;
+            var ChuyenBays = _dbContext.ChuyenBays.Where(x => x.ID == chuyenbayid);
+            var SanBayDI = ChuyenBays.Select(x => new SelectListItem
+            {
+                Text = sanbaydi,
+            }).ToList();
+            ViewBag.SanBayDi = SanBayDI;
+            //
+            var SanBayDen = ChuyenBays.Select(x => new SelectListItem
+            {
+                Text = sanbayden,
+            }).ToList();
+            ViewBag.SanBayDen = SanBayDen;
+            //
+            var GiaVe = ChuyenBays.Select(x => new SelectListItem
+            {
+                Text = x.GiaVe.ToString(),
+            }).ToList();
+            ViewBag.GiaVe = GiaVe;
+            //
             var chuyenbay = _dbContext.ChuyenBays.FirstOrDefault(x => x.ID == chuyenbayid);
             var vemaybay = new VeMayBay();
             vemaybay.ChuyenBay_ID = chuyenbayid;
@@ -78,12 +100,11 @@ namespace TicketWeb.Views.BookTicket
 
         public ActionResult Payment(int chuyenbayid)
         {
-            var vemaybay = _dbContext.VeMayBay.Where(x => x.ChuyenBay_ID == chuyenbayid);
-            return View(vemaybay.ToList());
+            return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Payment(VeMayBay model)
+        public ActionResult Payment()
         {
             return View();
         }

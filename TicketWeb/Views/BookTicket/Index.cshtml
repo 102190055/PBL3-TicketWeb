@@ -36,10 +36,10 @@ body { background-color: #90e3fc;
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.SanBayDi_ID)
+                Nơi đi
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.SanBayDen_ID)
+                Nơi đến
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ThoiGianDuKienBay)
@@ -66,7 +66,7 @@ body { background-color: #90e3fc;
                 @Html.DisplayFor(modelItem => item.GiaVe)
             </td>
             <td>
-                @Html.ActionLink("Chọn", "Booking", new { chuyenbayid = item.ID })
+                @Html.ActionLink("Chọn", "Booking", new { chuyenbayid = item.ID ,start = item.SanBayDi_ID,end =item.SanBayDen_ID })
             </td>
         </tr>
 }
