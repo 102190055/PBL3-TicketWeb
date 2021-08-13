@@ -1,8 +1,11 @@
 ﻿@model TicketWeb.Models.VeMayBay
-
+@{
+    ViewData["Title"] = "Nhập thông tin người đặt vé";
+}
 
 <style>
     body {
+        background-color: #90e3fc;
         font-family: Arial;
         font-size: 17px;
         padding: 8px;
@@ -40,63 +43,65 @@
 
 
 <body>
-    <div class="form_input">
-        <h1 style="text-align:center">Thông tin khách hàng</h1>
-        <div class="row">
-            <div class="col-md-4">
-                <form asp-action="Booking">
-                    <input type="hidden" asp-for="ChuyenBay_ID" />
-                    <input type="hidden" asp-for="GiaVe" />
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <div class="form-group" style="margin-bottom: 30px;">
-                        <label asp-for="TenKhach" class="control-label" style="font-size: 20px;"></label>
-                        <input class="input" asp-for="TenKhach" class="form-control" />
-                        <span asp-validation-for="TenKhach" class="text-danger"></span>
-                    </div>
-                    <div class="form-group" style="margin-bottom: 30px;">
-                        <label asp-for="NgaySinh" class="control-label" style="font-size: 20px;"></label>
-                        <input class="input" asp-for="NgaySinh" class="form-control" />
-                        <span asp-validation-for="NgaySinh" class="text-danger"></span>
-                    </div>
-                    <div class="form-group" style="margin-bottom: 30px;">
-                        <label asp-for="PhoneNumber" class="control-label" style="font-size: 20px;"></label>
-                        <input class="input" asp-for="PhoneNumber" class="form-control" />
-                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-                    </div>
-                    <div class="form-group" style="margin-bottom: 30px;">
-                        <label asp-for="Email" class="control-label"></label>
-                        <input class="input" asp-for="Email" class="form-control" />
-                        <span asp-validation-for="Email" class="text-danger"></span>
-                    </div>
-                    <div class="form-group" style="text-align:center">
-                        <input type="submit" value="Thanh Toán" class="btn_thanhtoan" />
-                    </div>
-                </form>
+    <div style="display: inline-flex;margin-left: 320px;">
+        <div class="form_input">
+            <h1 style="text-align:center">Thông tin khách hàng</h1>
+            <div class="row">
+                <div class="col-md-4">
+                    <form asp-action="Booking">
+                        <input type="hidden" asp-for="ChuyenBay_ID" />
+                        <input type="hidden" asp-for="GiaVe" />
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group" style="margin-bottom: 30px;">
+                            <label asp-for="TenKhach" class="control-label" style="font-size: 20px;"></label>
+                            <input class="input" asp-for="TenKhach" />
+                            <span asp-validation-for="TenKhach" class="text-danger"></span>
+                        </div>
+                        <div class="form-group" style="margin-bottom: 30px;">
+                            <label asp-for="NgaySinh" class="control-label" style="font-size: 20px;"></label>
+                            <input class="input" asp-for="NgaySinh"  />
+                            <span asp-validation-for="NgaySinh" class="text-danger"></span>
+                        </div>
+                        <div class="form-group" style="margin-bottom: 30px;">
+                            <label asp-for="PhoneNumber" class="control-label" style="font-size: 20px;"></label>
+                            <input class="input" asp-for="PhoneNumber"  />
+                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                        </div>
+                        <div class="form-group" style="margin-bottom: 30px;">
+                            <label asp-for="Email" class="control-label"></label>
+                            <input class="input" asp-for="Email"  />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-group" style="text-align:center">
+                            <input type="submit" value="Thanh Toán" class="btn_thanhtoan" />
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="form_input">
-        <h1 style="text-align:center">Thông tin chuyến bay</h1>
-        <div class="row">
-            <div class="col-md-4">
-                <form asp-action="Booking">
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <div class="form-group" style="margin-bottom: 30px;">
-                        <span class="outputDi">Nơi đi</span>
-                        <select class="searchSanBayDen_ID" asp-items="@ViewBag.SanBayDi"  style="width:200px;"></select>
-                        
-                    </div>
-                    <div class="form-group" style="margin-bottom: 30px;">
-                        <span class="outputDen">Nơi đến</span>
-                        <select class="searchSanBayDen_ID" asp-items="@ViewBag.SanBayDen" style="width:200px;"></select>
-                        
-                    </div>
-                    <div class="form-group">
-                        <span class="outputGiave">Giá vé</span>
-                        <select class="searchSanBayDen_ID" asp-items="@ViewBag.GiaVe"  style="width:200px;"></select>
-                        
-                    </div>
-                </form>
+        <div class="form_input">
+            <h1 style="text-align:center">Thông tin chuyến bay</h1>
+            <div class="row" style="margin-left:20px">
+                <div class="col-md-4">
+                    <form asp-action="Booking">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group" style="margin-bottom: 30px;">
+                            <span class="outputDi">Nơi đi</span>
+                            <select class="input" asp-items="@ViewBag.SanBayDi" style="width:270px;margin-left:15px"></select>
+
+                        </div>
+                        <div class="form-group" style="margin-bottom: 30px;">
+                            <span class="outputDen">Nơi đến</span>
+                            <select class="input" asp-items="@ViewBag.SanBayDen" style="width:270px;"></select>
+
+                        </div>
+                        <div class="form-group">
+                            <span class="outputGiave">Giá vé</span>
+                            <select class="input" asp-items="@ViewBag.GiaVe" style="width:270px;margin-left:12px"></select>
+
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
